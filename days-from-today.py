@@ -9,4 +9,4 @@ def get_days_from_today(date: str) -> int:
     except ValueError:
         print("Your input is not in 'YYYY-MM-DD' format ")
 
-get_days_from_today("2021-04-12")
+get_days_from_today("2024-04-06")
