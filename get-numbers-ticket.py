@@ -24,5 +24,5 @@ def get_numbers_ticket(min, max, quantity):
     else:
         return random_number
 
-lottery_numbers = get_numbers_ticket(1, 1000, 12)
+lottery_numbers = get_numbers_ticket(1, 49, 6)
 print("Ваші лотерейні числа:", lottery_numbers)

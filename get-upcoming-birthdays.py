@@ -1,27 +1,11 @@
 from datetime import datetime, timedelta  # Імпорт класів datetime та timedelta для роботи з датами і часом
 
 users = [  # Список користувачів з їхніми датами народження
-    {"name": "John Doe", "birthday": "1985.01.23"},
-    {"name": "Jane Smith", "birthday": "1990.01.27"},
-    {"name": "Jane Smith1", "birthday": "1990.03.05"},
-    {"name": "Jane Smith1", "birthday": "1990.03.07"},
-    {"name": "Jane Smith1", "birthday": "1990.03.10"},
+    {"name": "John Doe", "birthday": "1985.03.12"},
+    {"name": "Jane Smith", "birthday": "2020.03.10"}
 ]
 
-def find_next_weekday(d, weekday: int):  # Функція для знаходження наступного заданого дня тижня після заданої дати
-    """
-     Ф-ція для знаходження наступного заданого дня тижня після заданої дати
-    :param d: datetime.date - початкова дата
-    :param weekday: int - день тижня від 0 (понеділок) до 6 (неділя)
-    :return:
-    """
-    days_ahead = weekday - d.weekday()  # Різниця між заданим днем тижня та днем тижня заданої дати
-    if days_ahead <= 0:  # Якщо день народження вже минув
-        days_ahead += 7  # Додаємо 7 днів, щоб отримати наступний тиждень
-    return d + timedelta(days=days_ahead)  # Повертаємо нову дату
-
-
-def get_prepared_users():
+def get_prepared_users(users):
     prepared_users = []  # Список підготовлених користувачів
     for user in users:  # Ітерація по кожному користувачеві зі списку
         try:
@@ -30,6 +14,12 @@ def get_prepared_users():
         except ValueError:
             print(f'Некоректна дата народження для користувача {user["name"]}')  # Виводимо повідомлення про помилку
     return prepared_users
+
+def find_next_weekday(d, weekday: int):  # Функція для знаходження наступного заданого дня тижня після заданої дати
+    days_ahead = weekday - d.weekday()  # Різниця між заданим днем тижня та днем тижня заданої дати
+    if days_ahead <= 0:  # Якщо день народження вже минув
+        days_ahead += 7  # Додаємо 7 днів, щоб отримати наступний тиждень
+    return d + timedelta(days=days_ahead)  # Повертаємо нову дату
 
 def get_upcoming_birthdays(prepared_users):
     days = 7  # Кількість днів для перевірки на наближені дні народження
@@ -53,5 +43,5 @@ def get_upcoming_birthdays(prepared_users):
             })
     return upcoming_birthdays
 
-prepared_users = get_prepared_users()
+prepared_users = get_prepared_users(users)
 print(get_upcoming_birthdays(prepared_users))
