@@ -21,7 +21,8 @@ def find_next_weekday(d, weekday: int):  # Функція для знаходж�
         days_ahead += 7  # Додаємо 7 днів, щоб отримати наступний тиждень
     return d + timedelta(days=days_ahead)  # Повертаємо нову дату
 
-def get_upcoming_birthdays(prepared_users):
+def get_upcoming_birthdays(users):
+    prepared_users = get_prepared_users(users)
     days = 7  # Кількість днів для перевірки на наближені дні народження
     today = datetime.today().date()  # Поточна дата
 
@@ -43,5 +44,4 @@ def get_upcoming_birthdays(prepared_users):
             })
     return upcoming_birthdays
 
-prepared_users = get_prepared_users(users)
-print(get_upcoming_birthdays(prepared_users))
+print(get_upcoming_birthdays(users))
